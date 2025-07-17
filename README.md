@@ -46,18 +46,22 @@ A beautiful and functional Chrome extension that replaces your new tab page with
 
 ### Main Dashboard
 ![Main Dashboard](main-dashboard.png)
+
 *The main new tab page showing time, weather, todo list, and inspirational quote*
 
 ### Weather Details
 ![Weather Details](weather-details.png)
+
 *Expanded weather view with detailed information and forecast*
 
 ### Favorites Panel
 ![Favorites Panel](favorites-panel.png)
+
 *Favorites management panel with saved backgrounds and quotes*
 
 ### Settings Menu
 ![Settings Menu](settings-menu.png)
+
 *Settings dropdown with customization options*
 
 ## 🚀 Installation
