@@ -1,0 +1,177 @@
+<!-- newtab.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; connect-src https://api.unsplash.com https://api.openweathermap.org https://zenquotes.io; img-src 'self' https://openweathermap.org https://images.unsplash.com data:; style-src 'self' https://cdnjs.cloudflare.com; font-src https://cdnjs.cloudflare.com;">
+  <title>My Tab</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer">
+</head>
+
+<body>
+  <div class="container">
+    <!-- Add favorite button for current background -->
+    <div id="favorite-current-bg" class="favorite-current-bg" title="Add to Favorites">
+      <i class="fas fa-heart"></i>
+    </div>
+    
+    <!-- Favorites Panel with Tabs -->
+    <div id="favorites-panel" class="favorites-panel hidden">
+      <div class="favorites-header">
+        <h3>Favorites</h3>
+        <span id="favorites-close"><i class="fas fa-times"></i></span>
+      </div>
+      
+      <!-- Tab navigation -->
+      <div class="favorites-tabs">
+        <button id="tab-backgrounds" class="tab-button active">Backgrounds</button>
+        <button id="tab-quotes" class="tab-button">Quotes</button>
+      </div>
+      
+      <!-- Background favorites content -->
+      <div id="tab-content-backgrounds" class="tab-content active">
+        <div id="favorites-list" class="favorites-list">
+          <!-- Favorite backgrounds will be added here by JavaScript -->
+        </div>
+      </div>
+      
+      <!-- Quotes favorites content -->
+      <div id="tab-content-quotes" class="tab-content">
+        <div id="quotes-list" class="quotes-list">
+          <!-- Favorite quotes will be added here by JavaScript -->
+        </div>
+      </div>
+    </div>
+    
+    <div class="weather-container">
+      <div class="weather">
+        <div class="weather-header">
+          <div id="weather-temp"></div>
+          <div id="weather-location"></div>
+        </div>
+        <div class="weather-details hidden">
+          <div class="weather-info">
+            <div class="weather-detail">
+              <i class="fas fa-wind"></i>
+              <span id="weather-wind"></span>
+            </div>
+            <div class="weather-detail">
+              <i class="fas fa-tint"></i>
+              <span id="weather-humidity"></span>
+            </div>
+            <div class="weather-detail">
+              <i class="fas fa-temperature-high"></i>
+              <span id="weather-feels-like"></span>
+            </div>
+          </div>
+          <div class="weather-forecast" id="weather-forecast">
+            <!-- Forecast items will be added here by JavaScript -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="time-container">
+      <div id="time" class="time"></div>
+      <div id="greeting" class="greeting"></div>
+      <div id="focus-container">
+        <div id="focus-question">What is your main focus for today?</div>
+        <div id="focus-answer-container">
+          <input type="text" id="focus-input" placeholder="Type and press Enter" maxlength="100">
+          <div id="focus-display" class="hidden">
+            <span id="focus-text"></span>
+            <span id="focus-complete-btn"><i class="fas fa-check"></i></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="todo-container">
+      <div class="todo-header">
+        <h3>Todo</h3>
+        <span id="todo-toggle"><i class="fas fa-plus"></i></span>
+      </div>
+      <div id="todo-form" class="hidden">
+        <input type="text" id="todo-input" placeholder="New Todo" maxlength="100">
+      </div>
+      <div id="todo-list"></div>
+    </div>
+
+    <div class="quote">
+      <p id="quote-text"></p>
+      <p id="quote-author"></p>
+      <!-- Add favorite quote button -->
+      <div id="favorite-current-quote" class="favorite-current-quote" title="Add Quote to Favorites">
+        <i class="fas fa-heart"></i>
+      </div>
+    </div>
+    
+    <!-- Updated settings menu in bottom left -->
+    <div class="UpdateData">
+      <button id="settings-toggle" title="Settings Menu" aria-label="Settings Menu">
+        <div class="svg-container">
+          <i class="fas fa-cog"></i>
+        </div>
+      </button>
+      
+      <!-- Settings dropdown menu -->
+      <div id="settings-dropdown" class="settings-dropdown hidden">
+        <button id="refresh-button-Quote" title="Change Quote" aria-label="Change Quote">
+          <div class="svg-container">
+            <svg fill="#ffffff" height="25px" width="25px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" xml:space="preserve" stroke="#ffffff"
+              stroke-width="12">
+              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+              <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+              <g id="SVGRepo_iconCarrier">
+                <g>
+                  <g>
+                    <path
+                      d="M396.8,256c0-77.756-63.036-140.8-140.8-140.8c-49.271,0-92.561,25.353-117.726,63.676l18.859,18.859 C177.178,163.806,213.734,140.8,256,140.8c63.625,0,115.2,51.567,115.2,115.2h-38.4l51.2,51.2l51.2-51.2H396.8z">
+                    </path>
+                  </g>
+                </g>
+                <g>
+                  <g>
+                    <path
+                      d="M256,0C114.62,0,0,114.62,0,256s114.62,256,256,256s256-114.62,256-256S397.38,0,256,0z M256,486.4 C128.956,486.4,25.6,383.044,25.6,256S128.956,25.6,256,25.6S486.4,128.956,486.4,256S383.044,486.4,256,486.4z">
+                    </path>
+                  </g>
+                </g>
+                <g>
+                  <g>
+                    <path
+                      d="M354.867,314.266C334.822,348.194,298.266,371.2,256,371.2c-63.625,0-115.2-51.567-115.2-115.2h38.4L128,204.8L76.8,256 h38.4c0,77.756,63.036,140.8,140.8,140.8c49.271,0,92.561-25.353,117.726-63.676L354.867,314.266z">
+                    </path>
+                  </g>
+                </g>
+              </g>
+            </svg>
+          </div>
+          <span class="menu-item-text">Change Quote</span>
+        </button>
+        <button id="refresh-button-image" title="Change Background" aria-label="Change Background">
+          <div class="svg-container">
+            <svg fill="#ffffff" height="25px" width="25px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path fill="#ffffff" 
+                d="M4.758 2.017C3.391 2.13 2.305 3.12 2.047 4.489C2.006 4.704 2.004 5.107 2.004 12C2.004 18.893 2.006 19.296 2.047 19.511C2.286 20.779 3.221 21.714 4.489 21.953C4.704 21.994 5.107 21.996 12 21.996C18.893 21.996 19.296 21.994 19.511 21.953C20.779 21.714 21.714 20.779 21.953 19.511C21.994 19.296 21.996 18.893 21.996 12C21.996 5.107 21.994 4.704 21.953 4.489C21.716 3.231 20.801 2.308 19.536 2.048C19.345 2.009 18.868 2.006 12.156 2.002C8.209 2 4.88 2.007 4.758 2.017M19.417 4.095C19.622 4.192 19.808 4.378 19.905 4.583L19.98 4.74L19.986 8.663L19.993 12.587L19.182 11.781C18.551 11.153 18.327 10.946 18.168 10.842C17.631 10.492 17.133 10.343 16.5 10.343C15.868 10.343 15.371 10.491 14.832 10.842C14.655 10.957 14.028 11.574 10.114 15.485L5.601 19.995L5.17 19.988C4.746 19.98 4.738 19.979 4.583 19.905C4.378 19.808 4.192 19.622 4.095 19.417L4.02 19.26L4.02 12L4.02 4.74L4.095 4.583C4.213 4.333 4.424 4.146 4.703 4.043C4.772 4.017 6.103 4.012 12.024 4.016L19.26 4.02L19.417 4.095M8.748 6.014C8.408 6.061 8.286 6.086 8.088 6.149C7.047 6.48 6.269 7.36 6.055 8.447C6.001 8.723 6.001 9.277 6.055 9.553C6.239 10.489 6.833 11.266 7.693 11.695C7.879 11.788 8.255 11.91 8.496 11.955C8.697 11.993 9.303 11.993 9.504 11.955C10.469 11.774 11.26 11.179 11.695 10.307C11.788 10.121 11.91 9.745 11.955 9.504C11.993 9.303 11.993 8.697 11.955 8.496C11.72 7.245 10.786 6.296 9.554 6.058C9.372 6.022 8.879 5.996 8.748 6.014M9.156 8.016C9.688 8.103 10.07 8.623 9.986 9.145C9.898 9.689 9.382 10.071 8.85 9.985C8.313 9.898 7.93 9.38 8.014 8.855C8.091 8.382 8.482 8.032 8.976 7.995C8.996 7.993 9.077 8.003 9.156 8.016M16.932 12.428C17.09 12.502 17.182 12.59 18.546 13.951L19.993 15.395L19.987 17.328L19.98 19.26L19.905 19.417C19.808 19.622 19.622 19.808 19.417 19.905L19.26 19.98L13.836 19.986L8.412 19.992L12.156 16.25C14.863 13.545 15.93 12.494 16.008 12.454C16.203 12.356 16.298 12.336 16.536 12.343C16.736 12.349 16.785 12.359 16.932 12.428" />
+            </svg>
+          </div>
+          <span class="menu-item-text">Change Background</span>
+        </button>
+        <button id="favorites-button" title="Show Favorites" aria-label="Show Favorites">
+          <div class="svg-container">
+            <svg fill="#ffffff" height="25px" width="25px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z" />
+            </svg>
+          </div>
+          <span class="menu-item-text">Show Favorites</span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+
+</html>
